@@ -1,5 +1,6 @@
 package com.lbl.chatroom.netty.config;
 
+import com.lbl.chatroom.netty.handler.*;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -21,6 +22,13 @@ public class ChatServerWebSocketChannelInitializer extends ChannelInitializer<So
         pipeline.addLast(new HttpObjectAggregator(65536));
         pipeline.addLast(new ChunkedWriteHandler());
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws", null, false, Integer.MAX_VALUE, false));
+        // TODO 还需要加一个解包器
+        pipeline.addLast(new CreateGroupHandler());
+        pipeline.addLast(new GroupChatContentHandler());
+        pipeline.addLast(new InviteGroupHandler());
+        pipeline.addLast(new JoinGroupHandler());
+        pipeline.addLast(new LoginHandler());
+        pipeline.addLast(new OneToOneChatContentHandler());
         // TODO 自己的Handler
     }
 }
