@@ -12,7 +12,7 @@ public class ChatRoomService {
     public Map<String, Object> listAllChatRoom() {
         Map<String, Object> resMap = new HashMap<>();
         MemoryStore.getChatRoomList();
-
+        return null;
     }
 
     public Map<String, Object> joinChatRoom() {
