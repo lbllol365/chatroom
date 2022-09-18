@@ -30,6 +30,11 @@ public class RegisterHandler extends SimpleChannelInboundHandler<RegisterMessage
     protected void channelRead0(ChannelHandlerContext ctx, RegisterMessage msg) {
         try {
             String redisKey = RedisKey.USER_LOGIN + msg.getUsername();
+            // 用户名已存在
+            if(null != jedis.get(redisKey)) {
+                ctx.writeAndFlush(RegisterResponseMessage.USERNAME_ALREADY_EXIST);
+                return;
+            }
             String passwordMD5 = CommonUtil.getMD5(msg.getPassword());
             jedis.set(redisKey, passwordMD5);
             ctx.writeAndFlush(new RegisterResponseMessage(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage()));
