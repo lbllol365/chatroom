@@ -9,7 +9,8 @@ public enum MessageTypeEnum {
     ONETOONE_CHAT(3, OneToOneChatContentMessage.class),
     GROUP_CAHT(4, GroupChatContentMessage.class),
     INVITE_GROUP(5, InviteGroupMessage.class),
-    JOIN_GROUP(6, JoinGroupMessage.class)
+    JOIN_GROUP(6, JoinGroupMessage.class),
+    REGISTER(7, RegisterMessage.class)
     ;
 
 
