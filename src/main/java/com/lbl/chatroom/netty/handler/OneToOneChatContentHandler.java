@@ -1,9 +1,10 @@
 package com.lbl.chatroom.netty.handler;
 
 import com.lbl.chatroom.netty.message.req.OneToOneChatContentMessage;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-
+@ChannelHandler.Sharable
 public class OneToOneChatContentHandler extends SimpleChannelInboundHandler<OneToOneChatContentMessage> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, OneToOneChatContentMessage msg) throws Exception {
