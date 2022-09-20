@@ -5,10 +5,20 @@ import java.util.List;
 public class InviteGroupMessage {
     private String fromUsername;
 
+    private Integer groupId;
+
     private List<String> needInviteUsername;
 
     public String getFromUsername() {
         return fromUsername;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
     }
 
     public void setFromUsername(String fromUsername) {
