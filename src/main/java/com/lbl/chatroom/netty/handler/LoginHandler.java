@@ -4,6 +4,7 @@ import com.lbl.chatroom.config.RedisKey;
 import com.lbl.chatroom.enums.ResultCode;
 import com.lbl.chatroom.netty.message.req.LoginMessage;
 import com.lbl.chatroom.netty.message.res.LoginResponseMessage;
+import com.lbl.chatroom.netty.store.UsernameToChannelStore;
 import com.lbl.chatroom.util.CommonUtil;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -28,6 +29,7 @@ public class LoginHandler extends SimpleChannelInboundHandler<LoginMessage> {
         } else if(!passwordMD5.equals(CommonUtil.getMD5(msg.getPassword()))) {
             ctx.writeAndFlush(LoginResponseMessage.PASSWORD_NOT_MATCH);
         }
+        UsernameToChannelStore.storeChannel(msg.getUsername(), ctx.channel());
         ctx.writeAndFlush(LoginResponseMessage.SUCCESS);
         // TODO 登录状态用bitmap实现？？
     }
