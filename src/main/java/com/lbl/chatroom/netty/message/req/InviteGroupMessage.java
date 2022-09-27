@@ -5,7 +5,7 @@ import java.util.List;
 public class InviteGroupMessage {
     private String fromUsername;
 
-    private Integer groupId;
+    private String groupName;
 
     private List<String> needInviteUsername;
 
@@ -13,12 +13,12 @@ public class InviteGroupMessage {
         return fromUsername;
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public void setFromUsername(String fromUsername) {

@@ -15,4 +15,8 @@ public class UsernameToChannelStore {
     public static void storeChannel(String username, Channel channel) {
         USERNAME_TO_CHANNEL_MAP.put(username, channel);
     }
+
+    public static void deleteChannelByUsername(String username) {
+        USERNAME_TO_CHANNEL_MAP.remove(username);
+    }
 }
